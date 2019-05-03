@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.AppointDao">
+
+    <insert id="addAppoint">
+        INSERT INTO appoint ( examinerId, sendDate, appointDate, name)
+        VALUES ( #{examinerId}, #{sendDate}, #{appointDate}, #{name});
+    </insert>
+
+    <select id="getName" parameterType="Integer" resultType="String">
+        select name from examiner
+        where id = #{id}
+    </select>
+
+    <select id="getAppointsById" parameterType="Integer" resultType="Appoint">
+        select * from appoint
+        where examinerId = #{examinerId}
+        order by id desc
+    </select>
+
+    <select id="getAppoints" parameterType="Integer" resultType="Appoint">
+        select * from appoint
+        order by appointDate asc
+        limit #{start}, #{num}
+    </select>
+
+    <update id="updateAppoint">
+        update appoint
+        set result = #{result}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAppoint">
+        delete from appoint
+        where id = #{id}
+    </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.HealthDataDao">
+
+    <select id="getDatas" parameterType="Integer" resultType="HealthData">
+        select * from healthdata
+        limit #{start}, #{num}
+    </select>
+
+    <select id="getDataById" parameterType="Integer" resultType="HealthData">
+        select * from healthdata
+        where id = #{id}
+    </select>
+
+    <select id="getDatasByName" resultType="HealthData">
+        select * from healthdata
+        where name = #{name}
+        limit #{start}, #{num}
+    </select>
+
+    <select id="getDatasByDepart" resultType="HealthData">
+        select * from healthdata
+        where department = #{department}
+        limit #{start}, #{num}
+    </select>
+
+    <select id="getDatasByDepartAndName"  resultType="HealthData">
+        select * from healthdata
+        where department = #{department} and name = #{name}
+        limit #{start}, #{num}
+    </select>
+
+    <update id="updateDataById" parameterType="HealthData">
+        update healthdata
+        set name = #{name}, sex = #{sex}, age = #{age}, birthdate = #{birthdate}, department = #{department}, place = #{place},
+            colorVision = #{colorVision}, rightSight = #{rightSight}, leftSight = #{leftSight}, nose = #{nose},
+            throat = #{throat}, height = #{height}, highPressure = #{highPressure}, lowPressure = #{lowPressure},
+            weight = #{weight}, liver = #{liver}, thyroid = #{thyroid}, bladder = #{bladder}, dr = #{dr}, redCell = #{redCell},
+            electrocardiogram = #{electrocardiogram}, bone = #{bone}, eb = #{eb}, alb = #{alb}, whiteCell = #{whiteCell}
+        where id = #{id}
+    </update>
+    
+    <delete id="deleteDataById" parameterType="Integer">
+        delete from healthdata
+        where id = #{id}
+    </delete>
+</mapper>

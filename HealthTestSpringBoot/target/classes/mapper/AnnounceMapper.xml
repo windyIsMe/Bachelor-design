@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.AnnounceDao">
+
+    <insert id="addAnnounce">
+        INSERT INTO announce ( content, name, date )
+        VALUES ( #{content}, #{name}, #{date} );
+    </insert>
+
+    <select id="getAnnounces" resultType="Announce">
+        select * from announce
+        order by id desc
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
